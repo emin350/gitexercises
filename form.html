@@ -5,27 +5,92 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="jquery.min.js"></script>
+
+    <style>
+        form {
+            text-align: center;
+        }
+
+        ::placeholder{
+            color: red;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
+    
     <form>
-     <p id="isim">isim</p>
-     <input type="text" id="isiminput"/>
+         
+     <p id="isim">İsim</p>
+     <input type="text" id="isimInput" placeholder=""/>
 
-     <p id="soyisim">soyisim</p>
-     <input type="text" id="soyisiminput"/>
+     <p id="soyisim">Soyisim</p>
+     <input type="text" id="soyisimInput" placeholder="" />
 
-     <p id="email">email</p>
-     <input type="text" id="emailinput"/>
+     <p id="email">E-mail</p>
+     <input type="text" id="emailinput" placeholder=""/>
 
-     <p id="şifre">şifre</p>
-     <input type="text" id="şifre"/>
+     <p id="şifre">Şifre</p>
+     <input type="text" id="şifreinput" placeholder=""/>
 
-     <p id="şifretekrar">şifretekrar</p>
-     <input type="text" id="şifretekrar"/>
+     <p id="şifretekrar">Şifre Tekrar</p>
+     <input type="text" id="şifretekrarinput"  placeholder=""/>
     </br>   </br>
-x
-    <input type="button" id="gönder" value="gönder"/>
+
+    <input type="button" id="gonder" value="Gönder"/>
 
     </form>
-</body>
+<script>
+
+      $("#gonder").click(function() {
+
+if($("#isimInput").val()=="") {
+    $("#isimInput").attr("placeholder","isim boş bırakılamaz")
+}
+
+if($("#soyisimInput").val()=="") {
+    $("#soyisimInput").attr("placeholder","soyisim boş bırakılamaz")
+}
+
+if($("#emailinput").val()=="") {
+    $("#emailinput").attr("placeholder","email boş bırakılamaz")
+}
+
+if($("#şifreinput").val()=="") {
+    $("#şifreinput").attr("placeholder","sifre boş bırakılamaz")
+}
+
+if($("#şifretekrarinput").val()=="") {
+    $("#şifretekrarinput").attr("placeholder","sifre tekrar boş bırakılamaz")
+}
+
+function isEmail(email) {
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  return regex.test(email);
+}
+
+if($("#emailinput").val()!=="") {
+    if(isEmail($("#emailinput").val())==false){
+        alert("Hatalı e-mail hesabı")
+    }
+}
+
+if($("#şifreinput").val() !=="" && $("#şifretekrarinput").val() !=="") {
+    if($("#şifreinput").val() !== $("#şifretekrarinput").val()){
+        alert("şifreler uyuşmuyor")
+    }
+}
+
+});
+        
+// if(typeof jQuery=="undefined") {
+//     alert("no")
+// }else {
+//     alert("yes")
+// }
+
+</script>
+
+    </body>
 </html>
